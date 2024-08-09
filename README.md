@@ -36,6 +36,43 @@ environment.systemPackages = [
 > NSEARCH_FZF_CMD="fzf --multi --bind='ctrl-space:select' --bind='ctrl-/:deselect' "
 > ```
 
-##### Any type of input feedback or modification is welcome.
+
+Make the bellow script your `shell` command as replacement of `nix-shell` command.
+
+```bash
+#!/usr/bin/env bash
+# Initialize empty arrays for package names and options
+ps=()
+os=()
+
+# Loop through all the arguments
+for p in "$@"; do
+    if [[ "$p" != --* ]]; then
+        # If not an option, add it to the package names array
+        ps+=("nixpkgs#$p")
+    else
+        # If it is an option, add it to the options array
+        os+=("$p")
+    fi
+done
+
+# Construct the command
+cmd="SHELL=$(which zsh) IN_NIX_SHELL=\"impure\" nix shell ${os[*]} ${ps[*]}"
+echo "Executing \`$cmd\`..."
+
+# Execute the command
+eval $cmd
+```
+
+Then you can use the below command to easily initialize the nix-shell with multiple packages.
+
+```bash
+shell $(nsearch)
+```
+
+> [!TIP]
+> You can also map `nsearch` to a keybind in zsh via widgets.
+
+### Any type of input feedback or modification is welcome.
 
 Addition of new features, bug fixes, and improvements are always welcome.
