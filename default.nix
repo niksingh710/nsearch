@@ -1,21 +1,8 @@
-{ pkgs ? import <nixpkgs> { }, jq, fzf, makeWrapper, }:
-
-let inherit (pkgs) lib;
-in pkgs.stdenv.mkDerivation {
+{ pkgs ? import <nixpkgs> { }, lib, jq, fzf, }:
+pkgs.writeShellApplication {
   name = "nsearch";
-  src = ./.;
-
-  nativeBuildInputs = [ makeWrapper ];
-
-  installPhase = ''
-    mkdir -p $out/bin
-    cp $src/nsearch $out/bin/nsearch
-  '';
-
-  postInstall = ''
-    wrapProgram $out/bin/nsearch --prefix PATH ':' \
-      "${lib.makeBinPath [ jq fzf ]}"
-  '';
+  runtimeInputs = [ jq fzf ];
+  text = lib.readFile ./nsearch;
 
   meta = with lib; {
     description = "Search for packages in Nixpkgs";
