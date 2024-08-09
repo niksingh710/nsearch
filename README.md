@@ -36,7 +36,7 @@ environment.systemPackages = [
 Use fzf multimode to select multiple packages.
 
 ```bash
-NSEARCH_FZF_CMD="fzf --bind='ctrl-space:select' --bind='ctrl-/:deselect' "
+NSEARCH_FZF_CMD="fzf --multi --bind='ctrl-space:select' --bind='ctrl-/:deselect' "
 ```
 
 ##### Any type of input feedback or modification is welcome.
