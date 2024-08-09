@@ -91,7 +91,8 @@ search() {
   export CACHE_DIR
   jq -r ". | keys[]" <"$CACHE_DIR/db.json" |
     cut -d \. -f 3- |
-    ${FZF_CMD} --preview='bash -c "source <(declare -f preview_data); preview_data {}"'
+    ${FZF_CMD} --preview='bash -c "source <(declare -f preview_data); preview_data {}"' |
+    xargs
 }
 
 # Argument handler
