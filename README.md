@@ -31,10 +31,8 @@ environment.systemPackages = [
 ![out](https://github.com/user-attachments/assets/00c24bf4-6372-4053-a812-383829d81c6e)
 
 
-### Tips
-
+> [!TIP]
 Use fzf multimode to select multiple packages.
-
 ```bash
 NSEARCH_FZF_CMD="fzf --multi --bind='ctrl-space:select' --bind='ctrl-/:deselect' "
 ```
