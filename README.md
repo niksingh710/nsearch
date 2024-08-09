@@ -1,8 +1,7 @@
-### WHY?
-
+> [!Info]
 > I've been using the Nix website to search for packages, and while it worked fine, it required me to open the site, enter the search string, and go through the process each time. Although the nix search nixpkgs command worked, it took some time to load and evaluate everything.
 >
-> Later, a friend on Discord *(.sszark)* shared a command with me that allows searching for packages using fzf. Although I eventually learned about nix-index, I had already created this script. So, here we are.
+> Later, a friend on Discord _(.sszark)_ shared a command with me that allows searching for packages using fzf. Although I eventually learned about nix-index, I had already created this script. So, here we are.
 
 ### HOW?
 
@@ -30,12 +29,13 @@ environment.systemPackages = [
 
 ![out](https://github.com/user-attachments/assets/00c24bf4-6372-4053-a812-383829d81c6e)
 
-
 > [!TIP]
-Use fzf multimode to select multiple packages.
-```bash
-NSEARCH_FZF_CMD="fzf --multi --bind='ctrl-space:select' --bind='ctrl-/:deselect' "
-```
+> Use fzf multimode to select multiple packages.
+>
+> ```bash
+> NSEARCH_FZF_CMD="fzf --multi --bind='ctrl-space:select' --bind='ctrl-/:deselect' "
+> ```
 
 ##### Any type of input feedback or modification is welcome.
+
 Addition of new features, bug fixes, and improvements are always welcome.
