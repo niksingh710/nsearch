@@ -77,7 +77,7 @@ preview_data() {
   description="$(jq -r ".\"$attrs.$1\".description" <"$CACHE_DIR/db.json")"
   version="$(jq -r ".\"$attrs.$1\".version" <"$CACHE_DIR/db.json")"
 
-  cat <<EOF
+  cat <<EOF | fold -s -w $COLUMNS
 Package Name: $pname
 Version: $version
 Description: $description
@@ -91,7 +91,7 @@ search() {
   export CACHE_DIR
   jq -r ". | keys[]" <"$CACHE_DIR/db.json" |
     cut -d \. -f 3- |
-    ${FZF_CMD} --preview='bash -c "source <(declare -f preview_data); preview_data {} | fold -s -w 80"'
+    ${FZF_CMD} --preview='bash -c "source <(declare -f preview_data); preview_data {}"'
 }
 
 # Argument handler
