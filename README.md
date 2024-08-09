@@ -2,7 +2,7 @@
 
 > I've been using the Nix website to search for packages, and while it worked fine, it required me to open the site, enter the search string, and go through the process each time. Although the nix search nixpkgs command worked, it took some time to load and evaluate everything.
 >
-> Later, a friend on Discord shared a command with me that allows searching for packages using fzf. Although I eventually learned about nix-index, I had already created this script. So, here we are.
+> Later, a friend on Discord *(.sszark)* shared a command with me that allows searching for packages using fzf. Although I eventually learned about nix-index, I had already created this script. So, here we are.
 
 ### HOW?
 

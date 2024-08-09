@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CACHE_DIR="${NSEARCH_CACHE_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/nsearch}"
-FZF_CMD="${NSEARCH_FZF_CMD:-fzf}"
+FZF_CMD="${NSEARCH_FZF_CMD:-fzf --multi --preview-window=top,3,wrap}"
 
 help() {
   echo "Usage: $0 [options]"
