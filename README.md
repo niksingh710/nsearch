@@ -26,6 +26,8 @@ environment.systemPackages = [
 
 ### WHAT?
 
+![out](https://github.com/user-attachments/assets/9dc4b25d-529b-4326-91c8-af6dbc35baee)
+
 ![out](https://github.com/user-attachments/assets/00c24bf4-6372-4053-a812-383829d81c6e)
 
 
