@@ -26,6 +26,9 @@ environment.systemPackages = [
 
 ### WHAT?
 
+![out](https://github.com/user-attachments/assets/00c24bf4-6372-4053-a812-383829d81c6e)
+
+
 ### Tips
 
 Use fzf multimode to select multiple packages.
