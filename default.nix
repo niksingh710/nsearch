@@ -2,7 +2,7 @@
 pkgs.writeShellApplication {
   name = "nsearch";
   runtimeInputs = with pkgs;[ jq fzf ];
-  text = lib.readFile ./nsearch;
+  text = lib.readFile ./src/nsearch;
 
   meta = with lib; {
     description = "Search for packages in Nixpkgs";

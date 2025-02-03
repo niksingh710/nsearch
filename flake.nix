@@ -1,16 +1,46 @@
 {
-  description = "Flake to make nsearch available!";
+  description = "Description for the project";
 
-  inputs = { nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; };
+  inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  };
 
-  outputs = { self, nixpkgs }:
-    let
-      forAllSystems = function:
-        nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" ]
-          (system: function nixpkgs.legacyPackages.${system});
-    in
-    {
-      packages =
-        forAllSystems (pkgs: { default = pkgs.callPackage ./default.nix { }; });
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
+      perSystem = { config, self', inputs', pkgs, system, ... }: {
+        packages = {
+          default = pkgs.callPackage ./default.nix { };
+
+          nrun = pkgs.writeShellApplication {
+            name = "nrun";
+            runtimeInputs = with pkgs; [ jq fzf ];
+            text = pkgs.lib.readFile ./src/nrun;
+
+            meta = with pkgs.lib; {
+              description = "Run Nix commands";
+              license = licenses.gpl3;
+              platforms = platforms.linux;
+              maintainers = with maintainers; [ niksingh710 ];
+              mainProgram = "nrun";
+            };
+          };
+          nshell = pkgs.writeShellApplication {
+            name = "nshell";
+            runtimeInputs = with pkgs; [ jq fzf ];
+            text = pkgs.lib.readFile ./src/nshell;
+
+            meta = with pkgs.lib; {
+              description = "Initialize a shell with Nix environment";
+              license = licenses.gpl3;
+              platforms = platforms.linux;
+              maintainers = with maintainers; [ niksingh710 ];
+              mainProgram = "nshell";
+            };
+          };
+
+        };
+      };
     };
 }

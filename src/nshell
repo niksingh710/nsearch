@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# This will allow to quickly run command
+# `nix shell nixpkgs#<pkgname> nixpkgs#<pkgname>` > `nshell <pkgname> <pkgname> --args`
+# This also makes sure `nix shell` is detected in starship
+
+# Initialize empty arrays for package names and options
+ps=()
+os=()
+in_nix_shell="pure"
+
+# Loop through all the arguments
+for p in "$@"; do
+  if [[ "$p" != --* ]]; then
+    # If not an option, add it to the package names array
+    ps+=("nixpkgs#$p")
+  else
+    case "$p" in
+    --pure) in_nix_shell="pure" ;;
+    --impure) in_nix_shell="impure" ;;
+    esac
+    # If it is an option, add it to the options array
+    os+=("$p")
+  fi
+done
+
+# Construct the command
+cmd="SHELL=$SHELL IN_NIX_SHELL=\"$in_nix_shell\" nix shell ${os[*]} ${ps[*]}"
+echo "Executing \`$cmd\`..."
+
+# Execute the command
+eval "$cmd"

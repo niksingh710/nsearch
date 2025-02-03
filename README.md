@@ -72,6 +72,7 @@ shell $(nsearch)
 
 > [!TIP]
 > You can also map `nsearch` to a keybind in zsh via widgets.
+> There are two more utilities available `nrun`, `nsearch`.
 
 ### Any type of input feedback or modification is welcome.
 

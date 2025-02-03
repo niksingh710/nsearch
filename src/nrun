@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# This will allow to quickly run command
+# `nix run nixpkgs#<pkgname> <args>` > `nrun <pkgname> <args>`
+
+pkgname="$1"
+shift # Shift removes the first argument (pkgname) from the list of arguments
+
+args=("$@")
+
+cmd="nix run nixpkgs#$pkgname ${args[*]}"
+echo "Executing \`$cmd\`..."
+
+# Execute the command
+eval "$cmd"
