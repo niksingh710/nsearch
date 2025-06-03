@@ -22,7 +22,7 @@
             meta = with pkgs.lib; {
               description = "Run Nix commands";
               license = licenses.gpl3;
-              platforms = platforms.linux;
+              platforms = platforms.linux ++ platforms.darwin;
               maintainers = with maintainers; [ niksingh710 ];
               mainProgram = "nrun";
             };
@@ -35,7 +35,7 @@
             meta = with pkgs.lib; {
               description = "Initialize a shell with Nix environment";
               license = licenses.gpl3;
-              platforms = platforms.linux;
+              platforms = platforms.linux ++ platforms.darwin;
               maintainers = with maintainers; [ niksingh710 ];
               mainProgram = "nshell";
             };

@@ -7,7 +7,7 @@ pkgs.writeShellApplication {
   meta = with lib; {
     description = "Search for packages in Nixpkgs";
     license = licenses.gpl3;
-    platforms = platforms.linux;
+    platforms = platforms.linux ++ platforms.darwin;
     maintainers = with maintainers; [ niksingh710 ];
     mainProgram = "nsearch";
   };
