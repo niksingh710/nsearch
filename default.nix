@@ -1,7 +1,14 @@
-{ pkgs ? import <nixpkgs> { }, lib ? import <nixpkgs/lib> }:
+{
+  pkgs ? import <nixpkgs> { },
+  lib ? import <nixpkgs/lib>,
+}:
 pkgs.writeShellApplication {
   name = "nsearch";
-  runtimeInputs = with pkgs;[ jq fzf ];
+  runtimeInputs = with pkgs; [
+    jq
+    fzf
+    bash
+  ];
   text = lib.readFile ./src/nsearch;
 
   meta = with lib; {

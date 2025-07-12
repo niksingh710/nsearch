@@ -13,7 +13,7 @@
         packages = rec {
           default = pkgs.callPackage ./default.nix { };
           nsearch = default;
-
+          nsearch-adv = pkgs.callPackage ./nsearch-adv.nix { };
           nrun = pkgs.writeShellApplication {
             name = "nrun";
             runtimeInputs = with pkgs; [ jq fzf ];

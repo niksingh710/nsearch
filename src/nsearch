@@ -62,7 +62,7 @@ loading() {
 
 update() {
   mkdir -p "$CACHE_DIR"
-  nix search nixpkgs --json "" 2>/dev/null 1>"$CACHE_DIR/db.json" &
+  nix search nixpkgs --json "." 2>/dev/null 1>"$CACHE_DIR/db.json" &
   loading "[info] Updating the local Database"
   echo "[info] .... Database updated"
 }
@@ -91,7 +91,7 @@ search() {
   export CACHE_DIR
   jq -r ". | keys[]" <"$CACHE_DIR/db.json" |
     cut -d \. -f 3- |
-    ${FZF_CMD} --preview='bash -c "source <(declare -f preview_data); preview_data {}"' |
+    ${FZF_CMD} --preview='bash -c "preview_data {}"' |
     xargs
 }
 
