@@ -9,6 +9,15 @@
 nix run github:niksingh710/nsearch
 ```
 
+### Thanks to `3timeslazy`'s [nix-search-tv](https://github.com/3timeslazy/nix-search-tv)
+
+```
+nix run github:niksingh710/nsearch#nsearch-adv
+```
+Advance type search and much better than the default one.
+
+![Image](https://github.com/user-attachments/assets/efa9edba-4d77-4916-8ff7-e8a0b92cee6e)
+
 ##### Install
 
 ```
