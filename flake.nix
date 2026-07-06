@@ -11,9 +11,9 @@
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
       perSystem = { config, self', inputs', pkgs, system, ... }: {
         packages = rec {
-          default = pkgs.callPackage ./default.nix { };
-          nsearch = default;
-          nsearch-adv = pkgs.callPackage ./nsearch-adv.nix { };
+          default = nsearch;
+          nsearch = pkgs.callPackage ./default.nix { };
+          nsearch-adv = throw "nsearch-adv is deprecated; nix-search-tv is now in nixpkgs. Use pkgs.nix-search-tv directly (e.g. in home-manager: home.packages = [ pkgs.nix-search-tv ];)";
           nrun = pkgs.writeShellApplication {
             name = "nrun";
             runtimeInputs = with pkgs; [ jq fzf ];

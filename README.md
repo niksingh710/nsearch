@@ -11,26 +11,13 @@ nix run github:niksingh710/nsearch
 
 ### Thanks to `3timeslazy`'s [nix-search-tv](https://github.com/3timeslazy/nix-search-tv)
 
-```
-nix run github:niksingh710/nsearch#nsearch-adv
-```
-Advance type search and much better than the default one.
+> [!IMPORTANT]
+> `nsearch-adv` is deprecated. `nix-search-tv` is now packaged in nixpkgs directly.
+> Use `pkgs.nix-search-tv` instead - add it to your home-manager packages:
+> ```nix
+> home.packages = [ pkgs.nix-search-tv ];
+> ```
 
-![Image](https://github.com/user-attachments/assets/efa9edba-4d77-4916-8ff7-e8a0b92cee6e)
-
-##### Install
-
-```
-# flake input
-nsearch = {
-  url = "github:niksingh710/nsearch";
-  inputs.nixpkgs.follows = "nixpkgs";
-};
-
-environment.systemPackages = [
-  inputs.nsearch.packages.${pkgs.system}.default
-];
-```
 
 ### WHAT?
 
